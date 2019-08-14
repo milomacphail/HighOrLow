@@ -1,0 +1,11 @@
+C:\Users\milom\source\repos\HighOrLow\bin\Debug\netcoreapp2.1\HighOrLow.deps.json
+C:\Users\milom\source\repos\HighOrLow\bin\Debug\netcoreapp2.1\HighOrLow.runtimeconfig.json
+C:\Users\milom\source\repos\HighOrLow\bin\Debug\netcoreapp2.1\HighOrLow.runtimeconfig.dev.json
+C:\Users\milom\source\repos\HighOrLow\bin\Debug\netcoreapp2.1\HighOrLow.dll
+C:\Users\milom\source\repos\HighOrLow\bin\Debug\netcoreapp2.1\HighOrLow.pdb
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.csprojAssemblyReference.cache
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.csproj.CoreCompileInputs.cache
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.AssemblyInfoInputs.cache
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.AssemblyInfo.cs
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.dll
+C:\Users\milom\source\repos\HighOrLow\obj\Debug\netcoreapp2.1\HighOrLow.pdb
