@@ -4,43 +4,104 @@ namespace HighOrLow
 {
     public class Card
     {
-        public int drawCard()
+        public enum SuitValues { Clubs = 0, Diamonds = 1, Hearts = 2, Spades = 4 };
+        Array suits = Enum.GetValues(typeof(SuitValues));
+        SuitValues randomSuitValue = (SuitValues)(new Random()).Next(0, 3);
+
+        public int CardValue;
+        public string CardSuit;
+        public int RandomCardValue;
+
+        public Card()
         {
-            string[] suits = { "spades", "hearts", "diamonds", "clubs" };
-            Random cardSuit = new Random();
-            Random drawCardValue = new Random();
-            int suitValue = cardSuit.Next(0, 3);
-            int cardValue = drawCardValue.Next(2, 14);
-            return cardValue;
+            Random randomCardValue = new Random();
+            this.CardValue = randomCardValue.Next(2, 14);
+            this.CardSuit = randomSuitValue.ToString();
         }
 
-    }
-
-        public class Game : Card
+        public Card(int CardValue, int CardSuit)
         {
-           public void playGame()
-        { 
-            
-            var card = new Card();
-            var drawnCard = card.drawCard();
-            var playedCard = card.drawCard();
+            this.CardValue = CardValue;
+            this.CardSuit = randomSuitValue.ToString();
+        }
 
-            Console.WriteLine("{0} + {1}", playedCard);
-            Console.WriteLine("{0} + {1}", drawnCard);
+        /*public Card(int CardValue)
+        {
+            this.CardValue = CardValue;
+        }*/
 
-            if (playedCard == drawnCard)
+        public Card(int RandomCardValue)
+        {
+            Random randomCardValue = new Random();
+            this.RandomCardValue = randomCardValue.Next(2, 14);
+        }
+
+
+    }
+    public class Game
+    {
+        public void playGame()
+        {
+
+            var startingCard = new Card();
+            var nextCard = new Card();
+
+            int correctGuesses = 0;
+
+            if (startingCard.CardValue == nextCard.CardValue && startingCard.CardSuit == nextCard.CardSuit)
             {
-                Console.WriteLine("Cards cannot match!");
-                drawnCard = card.drawCard();
+                nextCard = new Card();
             }
             else
             {
-                Console.WriteLine("Game works kinda!");
+                Console.WriteLine("{0} {1}", startingCard.CardValue, startingCard.CardSuit);
+                Console.WriteLine("Guess high or low: ");
+                string input = Console.ReadLine();
+
+                if (input.ToLower() != "high" && input.ToLower() != "low")
+                {
+                    Console.WriteLine("Guess high or low: ");
+                    input = Console.ReadLine();
+                }
+                else
+                {
+                    if (nextCard.CardValue > startingCard.CardValue && input.ToLower() == "high" || nextCard.CardValue < startingCard.CardValue && input.ToLower() == "low")
+                    {
+                        Console.WriteLine("Nice guess! You win!");
+                        correctGuesses++;
+                        Console.WriteLine("Streak: {0}", correctGuesses);
+                        nextCard = startingCard;
+                        nextCard = new Card();
+                    }
+                    else if (nextCard.CardValue < startingCard.CardValue && input.ToLower() == "high" || nextCard.CardValue > startingCard.CardValue && input.ToLower() == "low")
+                    {
+                        Console.WriteLine("Ooooooh! Better luck next time! You lose.");
+                        correctGuesses = 0;
+                        Console.WriteLine("Streak: {0}", correctGuesses);
+                    }
+                    else
+                    {
+                        Console.WriteLine("A draw! You still lose.");
+                        correctGuesses = 0;
+                        Console.WriteLine("Streak: {0}", correctGuesses);
+                    }
+                }
+
+
+                /*if (playedCard == drawnCard)
+                {
+                    Console.WriteLine("Cards cannot match!");
+                    drawnCard = card.drawCard();
+                }
+                else
+                {
+                    Console.WriteLine("Game works kinda!");
+                }
+
+                //string drawnCardValue = drawnCard.Substring(0, 1);
+                //tring playedCardValue = playedCard.Substring(0, 1);*/
+
             }
-
-            //string drawnCardValue = drawnCard.Substring(0, 1);
-            //tring playedCardValue = playedCard.Substring(0, 1);
-
         }
 
         /*public class Guess
@@ -54,16 +115,24 @@ namespace HighOrLow
             }
         }*/
 
-    }
+        // }
 
-    class Program
-    {
-        static void Main(string[] args)
+        class Program
         {
-            Console.WriteLine("Please guess high or low: ");
-            Console.ReadLine();
-            var newGame = new Game();
-            newGame.playGame();
+            static void Main(string[] args)
+            {
+
+                //Console.WriteLine("Please guess high or low: ");
+                //Console.ReadLine();
+                var newGame = new Game();
+                newGame.playGame();
+                //newGame.playGame();
+                //var card = new Card();
+                //var newCard = new Card(7, 3);
+                //Console.WriteLine("Card Value: {0}, Card Suit: {1}", card.CardValue, card.CardSuit);
+                //Console.WriteLine("Card Value: {0}, Card Suit: {1}", newCard.CardValue, newCard.CardSuit);
+
+            }
         }
     }
 }
